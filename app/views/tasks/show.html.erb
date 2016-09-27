@@ -1,0 +1,16 @@
+<h2>Title: <%= @tasks_list[@id][:name] %></h2>
+
+<h3>Description:</h3>
+<p>
+  <%= @tasks_list[@id][:description] %>
+</p>
+
+<h4>Completion Status: <%= @tasks_list[@id][:completion_status] %>
+</h4>
+
+<h4>Completion Date: <%= @tasks_list[@id][:completion_date] %>
+</h4>
+
+<%# content_tag(:h2) do
+  @tasks_list[@id][:name]
+end %>

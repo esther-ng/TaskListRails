@@ -1,0 +1,8 @@
+<h1>List of Tasks</h1>
+
+<ul>
+  <% @tasks_list.each_with_index do |task, index| %>
+    <% @index = index.to_s %>
+    <li><%= link_to(task, '/tasks/' + @index) %><input type="checkbox"></li>
+  <% end %>
+</ul>
