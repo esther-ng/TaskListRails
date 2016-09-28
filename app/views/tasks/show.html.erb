@@ -1,15 +1,15 @@
-<h2>Title: <%= @tasks_list[@id][:name] %></h2>
+<h2>Title: <%= @task.name %></h2>
 
 <h3>Description:</h3>
 <p>
-  <%= @tasks_list[@id][:description] %>
+  <%= @task.description %>
 </p>
 
-<h4>Completion Status: <%= @tasks_list[@id][:completion_status] %>
+<h4>Completed? <%= @task.completed %>
 </h4>
 
-<h4>Completion Date: <%= @tasks_list[@id][:completion_date] %>
-</h4>
+<!-- <h4>Completion Date: <%# @tasks_list[@id][:completion_date] %>
+</h4> -->
 
 <%# content_tag(:h2) do
   @tasks_list[@id][:name]
