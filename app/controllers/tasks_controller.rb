@@ -4,7 +4,8 @@ class TasksController < ApplicationController
     @tasks_list = [
       "Buy milk",
       "Go to gym",
-      "Walk dog"
+      "Walk dog",
+      "Clean house"
     ]
 
     puts "These are the params: #{params}"
@@ -30,7 +31,13 @@ class TasksController < ApplicationController
         name: "Walk dog",
         description: "The dog is getting fat. Please walk it already.",
         completion_status: "Complete",
-        completion_date: Date.new
+        completion_date: Time.new
+      },
+      {
+        name: "Clean house",
+        description: "The place is filthy and needs a thorough cleaning",
+        completion_status: "Complete",
+        completion_date: Time.new
       }
     ]
   end
