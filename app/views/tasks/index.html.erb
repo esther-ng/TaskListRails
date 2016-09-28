@@ -2,6 +2,15 @@
 
 <ul>
   <% @tasks_list.each do |task| %>
-    <li><%= link_to(task.name, task_path(task)) %><input type="checkbox"></li>
+    <li><%= link_to(task.title, task_path(task)) %></li>
+      <label for="completed">Completed?</label>
+      <% if task.completed_at != nil %>
+        <input type="checkbox" checked name="completed">
+      <% else %>
+        <input type="checkbox" name="completed">
+      <% end%>
+      <button type="button" name="delete"><%= link_to "Delete task", "/tasks/delete" %></button>
   <% end %>
 </ul>
+
+<button type="button" name="new_task"><%= link_to "Add new task", "/tasks/new"%></button>

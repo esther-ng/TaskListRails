@@ -9,6 +9,10 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+
+    @completed = "Completed" if @task.completed == true
+
+    @completed = "Incomplete" if @task.completed == false
     #   {
     #     name:"Buy milk",
     #     description: "Go to store and buy milk",
@@ -34,5 +38,17 @@ class TasksController < ApplicationController
     #     completion_date: Time.new
     #   }
     # ]
+  end
+
+  def new
+    
+  end
+
+  def create
+    redirect_to tasks_path
+  end
+
+  def delete
+
   end
 end

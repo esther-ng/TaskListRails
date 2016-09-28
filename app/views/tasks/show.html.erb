@@ -1,15 +1,21 @@
-<h2>Title: <%= @task.name %></h2>
+<h2>Title: <%= @task.title %></h2>
 
 <h3>Description:</h3>
 <p>
   <%= @task.description %>
 </p>
 
-<h4>Completed? <%= @task.completed %>
+<h4>Completed? <%= @completed %>
+  <% if @task.completed_at != nil %>
+    <input type="checkbox" checked name="completed">
+  <% else %>
+    <input type="checkbox" name="completed">
+  <% end%>
+  <!-- <%# check_box(@task, completed, checked_value = "1", unchecked_value = "0")%> -->
 </h4>
 
-<!-- <h4>Completion Date: <%# @tasks_list[@id][:completion_date] %>
-</h4> -->
+<h4>Completed at: <%= @task.completed_at %>
+</h4>
 
 <%# content_tag(:h2) do
   @tasks_list[@id][:name]
