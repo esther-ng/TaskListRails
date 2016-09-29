@@ -10,9 +10,9 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
 
-    @completed = "Completed" if @task.completed == true
-
-    @completed = "Incomplete" if @task.completed == false
+    # @completed = "Completed" if @task.completed == true
+    #
+    # @completed = "Incomplete" if @task.completed == false
 
   end
 
@@ -27,6 +27,21 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     else
       render :new
+    end
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+
+    if @task.save
+      redirect_to tasks_path
+    else
+      render :edit
     end
   end
 

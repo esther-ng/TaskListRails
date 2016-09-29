@@ -9,7 +9,10 @@
       <% else %>
         <input type="checkbox" name="completed">
       <% end%>
+
       <button type="button" name="delete"><%= link_to "Delete task", "/tasks/#{task.id}/delete/" %></button>
+
+      <button type="button" name="edit"><%= link_to "Edit task", "/tasks/#{task.id}/edit/" %></button>
   <% end %>
 </ul>
 

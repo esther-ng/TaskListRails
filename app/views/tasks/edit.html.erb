@@ -1,0 +1,22 @@
+<%= form_for @task, method: :patch do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, size: "60x3" %>
+
+  <br>
+
+  <%= f.label :completed, "Completed?" %>
+  <%= f.check_box :completed %>
+
+  <br>
+
+  <%= f.label :completed_at %>
+  <%= f.datetime_local_field :completed_at %>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
