@@ -17,16 +17,32 @@ class TasksController < ApplicationController
   end
 
   def new
-
+    @task = Task.new
   end
 
   def create
-    Task.create(title: params[:title], description: params[:description], completed: params[:completed], completed_at: params[:completed_at])
+    @task = Task.new(task_params)
+
+    if @task.save
+      redirect_to tasks_path
+    else
+      render :new
+    end
+  end
+
+  def delete
+    @task = Task.find(params[:id])
+  end
+
+  def destroy
+    Task.find(params[:id]).destroy
 
     redirect_to tasks_path
   end
 
-  def delete
+  private
 
+  def task_params
+    params.require(:task).permit(:title, :description, :completed, :completed_at)
   end
 end

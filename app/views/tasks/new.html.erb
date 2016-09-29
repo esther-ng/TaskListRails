@@ -1,20 +1,22 @@
-<form action="/tasks" method="post" accept-charset="utf-8">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<%= form_for @task do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-  <label for="title">Title</label>
-  <input type="text" name="title" value="" id="title">
-  <p>
-    <label for="description">Description</label>
-  </p>
-  <p>
-    <textarea name="description" value="" id="description" rows="2" cols="40"></textarea>
-  </p>
+  <br>
 
-  <label for="completed">Completed?</label>
-  <input type="checkbox" name="completed" value="true">
-  <p>
-    <label for="completed_at">Completed At:</label>
-    <input type="datetime-local" name="completed_at" value="">
-  </p>
-  <input type="submit" value="Submit">
-</form>
+  <%= f.label :description %>
+  <%= f.text_area :description, size: "60x3" %>
+
+  <br>
+
+  <%= f.label :completed, "Completed?" %>
+  <%= f.check_box :completed %>
+
+  <br>
+
+  <%= f.label :completed_at %>
+  <%= f.datetime_local_field :completed_at %>
+
+  <%= f.submit "Submit" %>
+
+<% end %>

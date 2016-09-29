@@ -1,0 +1,16 @@
+<h1>DELETE TASK</h1>
+
+<h2>Title: <%= @task.title %></h2>
+
+<h3>Description:</h3>
+<p>
+  <%= @task.description %>
+</p>
+
+<h1>ARE YOU SURE YOU WANT TO DELETE THIS TASK?</h1>
+
+<%= form_for @task, method: :delete do |f| %>
+  <%= f.submit "Yes, DELETE" %>
+<% end %>
+
+<button type="button" name="do-not-delete"><%= link_to "NO, I STILL NEED THIS", tasks_path %></button>

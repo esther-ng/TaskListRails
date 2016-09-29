@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'tasks#index'
   get '/tasks' => 'tasks#index'
   get '/tasks/new' => 'tasks#new'
-  get '/tasks/delete' => 'tasks#delete'
-  delete '/tasks/:id' => 'tasks#destroy'
+  get '/tasks/:id/delete', to: 'tasks#delete', as: 'task_delete' #this is the prefix for path
+  delete '/tasks/:id', to: 'tasks#destroy', as: 'task_destroy'
   get '/tasks/:id', to: 'tasks#show', as: 'task'
   post '/tasks' => 'tasks#create'
 
