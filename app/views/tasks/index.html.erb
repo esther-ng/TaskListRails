@@ -2,17 +2,30 @@
 
 <ul>
   <% @tasks_list.each do |task| %>
-    <li><%= link_to(task.title, task_path(task)) %></li>
-      <label for="completed">Completed?</label>
-      <% if task.completed_at != nil %>
-        <input type="checkbox" checked name="completed">
+    <li>
+      <%= link_to(task.title, task_path(task)) %>
+        <% if task.completed == true %>
+          <input type="checkbox" checked name="completed">
+        <% else %>
+          <input type="checkbox" name="completed">
+        <% end%>
+      <%= form_for task do |f| %>
+        <%= f.label :completed, "Completed?" %>
+        <%= f.check_box :completed %>
+      <% end %>
+
+      <% if task.completed %>
+        <%= button_to("Mark Incomplete", task_completed_path(task),
+      method: :put) %>
       <% else %>
-        <input type="checkbox" name="completed">
+        <%= button_to("Mark Complete", task_completed_path(task),
+      method: :put) %>
       <% end%>
 
-      <button type="button" name="delete"><%= link_to "Delete task", "/tasks/#{task.id}/delete/" %></button>
+      <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" } %>
 
-      <button type="button" name="edit"><%= link_to "Edit task", "/tasks/#{task.id}/edit/" %></button>
+      <%= link_to "Edit", "/tasks/#{task.id}/edit/" %>
+    </li>
   <% end %>
 </ul>
 

@@ -2,18 +2,11 @@ class TasksController < ApplicationController
   def index
 
     @tasks_list = Task.all
-
-    puts "These are the params: #{params}"
-
+    # puts "These are the params: #{params}"
   end
 
   def show
     @task = Task.find(params[:id])
-
-    # @completed = "Completed" if @task.completed == true
-    #
-    # @completed = "Incomplete" if @task.completed == false
-
   end
 
   def new
@@ -45,8 +38,11 @@ class TasksController < ApplicationController
     end
   end
 
-  def delete
+  def completed
     @task = Task.find(params[:id])
+    @task.complete_toggle(params[:id])
+
+    redirect_to tasks_path
   end
 
   def destroy
