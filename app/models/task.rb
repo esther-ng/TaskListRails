@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+  belongs_to :user
   # def complete_toggle(id)
   #   task = Task.find(id)
   #   if task.completed

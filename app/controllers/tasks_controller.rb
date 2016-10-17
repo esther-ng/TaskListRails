@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
   def index
-
-    @tasks_list = Task.all
+    if session[:user_id].nil?
+      redirect_to root_path
+      return
+    end
+    @user = User.find_by(session[:user_id])
+    @tasks_list = @user.tasks
     # puts "These are the params: #{params}"
   end
 

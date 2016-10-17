@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  root 'tasks#index'
+  root 'sessions#index'
 
+  get "sessions/index" => "sessions#index"
+  get "/auth/:provider/callback" => "sessions#create"
+
+  delete "/sessions", to: "sessions#destroy"
   resources :tasks
 
   # get '/tasks' => 'tasks#index'
