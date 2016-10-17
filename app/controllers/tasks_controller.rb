@@ -29,6 +29,12 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    if task_params[:completed] == "1"
+       task_params[:completed_at] = DateTime.now
+    else
+       task_params[:completed_at] = nil
+    end
+
     @task.update(task_params)
 
     if @task.save
@@ -38,12 +44,12 @@ class TasksController < ApplicationController
     end
   end
 
-  def completed
-    @task = Task.find(params[:id])
-    @task.complete_toggle(params[:id])
-
-    redirect_to tasks_path
-  end
+  # def completed
+  #   @task = Task.find(params[:id])
+  #   @task.complete_toggle(params[:id])
+  #
+  #   redirect_to tasks_path
+  # end
 
   def destroy
     Task.find(params[:id]).destroy
@@ -52,8 +58,19 @@ class TasksController < ApplicationController
   end
 
   private
+  #
+  # def toggle_completion
+  #   if @task.completed
+  #     @task.completed = false
+  #     @task.completed_at = nil
+  #   else
+  #     @task.completed = true
+  #     @task.completed_at = DateTime.now
+  #   end
+  # end
 
   def task_params
     params.require(:task).permit(:title, :description, :completed, :completed_at)
   end
+
 end
