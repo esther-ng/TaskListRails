@@ -4,7 +4,7 @@ class TasksController < ApplicationController
       redirect_to root_path
       return
     end
-    @user = User.find_by(session[:user_id])
+    @user = User.find(session[:user_id])
     @tasks_list = @user.tasks
     # puts "These are the params: #{params}"
   end

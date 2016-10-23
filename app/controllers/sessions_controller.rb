@@ -1,9 +1,12 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:index, :create]
+
   def index
-    if session[:user_id].nil?
-      @logged_in = false
-    else
+    if !session[:user_id].nil?
+    #   @logged_in = false
+    # else
       @logged_in = true
+      redirect_to tasks_path
     end
   end
 

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+gem 'awesome_print'
+gem 'minitest-reporters'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
 # Use sqlite3 as the database for Active Record
@@ -38,9 +39,13 @@ group :development, :test do
   gem 'byebug'
   gem 'sqlite3' # sqlite3 cannot actually deploy to the real internet, only works locally, so you only use this for testing
   gem 'dotenv-rails'
-  gem 'better_errors'
-  gem 'binding_of_caller'
 
+end
+
+group :test do
+    gem 'minitest-rails'
+    gem 'minitest-reporters'
+    gem 'simplecov'
 end
 
 group :development do
@@ -49,7 +54,8 @@ group :development do
   gem 'pry-rails'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'better_errors'
+  gem 'binding_of_caller'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
