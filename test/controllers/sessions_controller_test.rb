@@ -41,7 +41,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "If a user is not logged in they get redirected to root" do
-    delete :destroy
+    logout_a_user
     assert session[:user_id].nil?
     assert_redirected_to root_path
   end
