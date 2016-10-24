@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create"
 
   delete "/sessions", to: "sessions#destroy"
+  patch '/tasks/:id/:status', to: 'tasks#status', as: 'task_status'
   resources :tasks
 
   # get '/tasks' => 'tasks#index'
